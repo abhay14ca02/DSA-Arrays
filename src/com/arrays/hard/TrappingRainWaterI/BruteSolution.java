@@ -9,16 +9,16 @@ public class BruteSolution {
 		int waterStored = 0;
 		int n = height.length;
 		// For every element of the array
-		for (int i = 1; i < n - 1; i++) {
+		for (int i = 0; i < n; i++) {
 
 			// Find the maximum element on its left
 			int leftMax = height[i];
-			for (int j = 0; j < i; j++) {
+			for (int j = 0; j <= i; j++) {
 				leftMax = Math.max(leftMax, height[j]);
 			}
 			// Find the maximum element on its right
 			int rightMax = height[i];
-			for (int j = i + 1; j < n; j++) {
+			for (int j = i; j < n; j++) {
 				rightMax = Math.max(rightMax, height[j]);
 			}
 			// Update the maximum water

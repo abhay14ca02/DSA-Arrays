@@ -26,31 +26,26 @@ public class OptimalApproach {
 					continue;
 				}
 				// 2 pointers:
-				int k = j + 1;
-				int l = n - 1;
-				while (k < l) {
-					long sum = nums[i];
-					sum += nums[j];
-					sum += nums[k];
-					sum += nums[l];
+				int left = j + 1;
+				int right = n - 1;
+				while (left < right) {
+					long sum = nums[i] + nums[j];
+					sum += nums[left] + nums[right];
 					if (sum == target) {
-						List<Integer> list = new ArrayList<>();
-						list.add(nums[i]);
-						list.add(nums[j]);
-						list.add(nums[k]);
-						list.add(nums[l]);
-						result.add(list);
-						k++;
-						l--;
-						// skip the duplicates:
-						while (k < l && nums[k] == nums[k - 1])
-							k++;
-						while (k < l && nums[l] == nums[l + 1])
-							l--;
+						result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+						// Adjust left & right pointers to find more possible triplets
+						left++;
+						right--;
+						// Skip duplicate 'left'
+						while (left < right && nums[left] == nums[left - 1])
+							left++;
+						// Skip duplicate 'right'
+						while (left < right && nums[right] == nums[right + 1])
+							right--;
 					} else if (sum < target)
-						k++;
+						left++;
 					else
-						l--;
+						right--;
 
 				}
 			}

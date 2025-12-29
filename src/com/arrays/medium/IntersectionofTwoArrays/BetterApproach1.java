@@ -1,8 +1,6 @@
 package com.arrays.medium.IntersectionofTwoArrays;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 //Given two integer arrays nums1 and nums2, return an array of their intersection.
@@ -10,23 +8,24 @@ import java.util.Set;
 //Input: nums1 = [1,2,2,1], nums2 = [2,2], Output: [2]
 //Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4], Output: [9,4], Explanation: [4,9] is also accepted.
 public class BetterApproach1 {
-	// Using one set
 	private static int[] intersection(int[] nums1, int[] nums2) {
-
+		// Using 2 sets
 		Set<Integer> set = new HashSet<Integer>();
-		List<Integer> result = new ArrayList<Integer>();
-		for (int i = 0; i < nums1.length; i++) {
-
-			set.add(nums1[i]);
+		Set<Integer> set1 = new HashSet<Integer>();
+		for (int num1 : nums1) {
+			set.add(num1);
 		}
-		for (int j = 0; j < nums2.length; j++) {
-			if (set.contains(nums2[j])) {
-				result.add(nums2[j]);
-				set.remove(nums2[j]);
-
+		for (int num2 : nums2) {
+			if (set.contains(num2)) {
+				set1.add(num2);
 			}
 		}
-		return result.stream().mapToInt(Integer::intValue).toArray();
+		int[] result = new int[set1.size()];
+		int i = 0;
+		for (Integer num : set1) {
+			result[i++] = num;
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -39,4 +38,4 @@ public class BetterApproach1 {
 	}
 }
 //Time Complexity:O(N+M)
-//Space Complexity :O(N)
+//Space Complexity :O(N+ unique elements)

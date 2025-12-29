@@ -8,17 +8,11 @@ public class OptimalSolution {
 		int num2Index = -1;
 
 		for (int i = 0; i < arr.length; i++) {
-
 			if (arr[i] == num1) {
 				num1Index = i;
-				break;
 			}
-		}
-		for (int i = arr.length - 1; i >= 0; i--) {
-
 			if (arr[i] == num2) {
 				num2Index = i;
-				break;
 			}
 		}
 		if (num1Index == -1 || num2Index == -1) {

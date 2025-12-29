@@ -13,14 +13,12 @@ public class BruteApproach {
 			return 0;
 		}
 		int longest = 1;
-		// pick a element and search for its
-		// consecutive numbers:
+		// pick an element and search for its consecutive numbers:
 		for (int i = 0; i < n; i++) {
 			int ele = nums[i];
 			int count = 1;
-			// search for consecutive numbers
-			// using linear search:
-			while (linearSearch(nums, ele + 1) == true) {
+			// search for consecutive numbers using linear search:
+			while (isExists(nums, ele + 1)) {
 				ele += 1;
 				count += 1;
 			}
@@ -30,7 +28,7 @@ public class BruteApproach {
 		return longest;
 	}
 
-	private static boolean linearSearch(int[] nums, int ele) {
+	private static boolean isExists(int[] nums, int ele) {
 
 		for (int i = 0; i < nums.length; i++) {
 			if (nums[i] == ele) {

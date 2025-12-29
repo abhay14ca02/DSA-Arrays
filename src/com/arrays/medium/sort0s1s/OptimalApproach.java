@@ -9,19 +9,19 @@ public class OptimalApproach {
 		int low = 0;
 		int high = nums.length - 1;
 		while (low < high) {
-			if (nums[high] == 0) {
-				int temp = nums[high];
-				nums[high] = nums[low];
-				nums[low] = temp;
+			if (nums[low] == 0) {
 				low++;
 			} else {
+				int temp = nums[low];
+				nums[low] = nums[high];
+				nums[high] = temp;
 				high--;
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 0, 1, 1, 0 };
+		int[] nums = { 1, 0, 1, 1, 0, 1, 0 };
 		segregateNums(nums);
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i] + " ");

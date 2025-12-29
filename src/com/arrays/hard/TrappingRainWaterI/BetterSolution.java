@@ -10,23 +10,28 @@ public class BetterSolution {
 		int n = height.length;
 		int[] leftMax = new int[n];
 		int[] rightMax = new int[n];
-		leftMax[0] = 0;
-		rightMax[n - 1] = 0;
+		leftMax[0] = height[0];
+		rightMax[n - 1] = height[n - 1];
+
+		// For each index i from 1 to n-1: Build leftMax
 		for (int i = 1; i < n; i++) {
-			leftMax[i] = Math.max(leftMax[i - 1], height[i - 1]);
+			leftMax[i] = Math.max(leftMax[i - 1], height[i]);
 		}
+		// For each index i from n-2 down to 0: Build rightMax
 		for (int i = n - 2; i >= 0; i--) {
-			rightMax[i] = Math.max(rightMax[i + 1], height[i + 1]);
+			rightMax[i] = Math.max(rightMax[i + 1], height[i]);
 		}
+		// Compute water at each index
 		int waterStore = 0;
 		for (int i = 0; i < n; i++) {
 			int minHeight = Math.min(leftMax[i], rightMax[i]);
 			int minWater = minHeight - height[i];
 
-			if (minWater >= 0) {
+			if (minWater > 0) {
 				waterStore += minWater;
 			}
 		}
+
 		return waterStore;
 	}
 

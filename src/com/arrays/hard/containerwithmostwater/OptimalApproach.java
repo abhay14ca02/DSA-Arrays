@@ -10,17 +10,17 @@ public class OptimalApproach {
 	private static int maxArea(int[] height) {
 
 		int maxWater = 0;
-		int start = 0;
-		int end = height.length - 1;
-		while (start < end) {
-			int wt = end - start;
-			int ht = Math.min(height[start], height[end]);
+		int left = 0;
+		int right = height.length - 1;
+		while (left < right) {
+			int wt = right - left;
+			int ht = Math.min(height[left], height[right]);
 			int currentWater = wt * ht;
 			maxWater = Math.max(maxWater, currentWater);
-			if (height[start] < height[end]) {
-				start++;
+			if (height[left] < height[right]) {
+				left++;
 			} else {
-				end--;
+				right--;
 			}
 		}
 		return maxWater;

@@ -23,8 +23,7 @@ public class BetterApproach {
 			if (nums[i] == nums[i - 1]) {
 				continue;
 			}
-			// Check if the current element is equal
-			// to previous element + 1
+			// Check if the current element is equal to previous element + 1
 			if (nums[i] == nums[i - 1] + 1) {
 				count++;
 			} else {
@@ -44,3 +43,6 @@ public class BetterApproach {
 	}
 
 }
+
+// Time Complexity : O(NLogN) + O(N)
+// Space Complexity : O(1)

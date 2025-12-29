@@ -9,18 +9,17 @@ package com.arrays.easy.FindClosestNumberToZero;
 // Explanation: 1 and -1 are both the closest numbers to 0, so 1 being larger is returned.
 public class OptimalSolution {
 	private static int findClosestNumber(int[] nums) {
-		int bestNum = Integer.MAX_VALUE;
-		int n = nums.length;
-		for (int i = 0; i < n; i++) {
-			int num = nums[i];
-			if (Math.abs(num) < Math.abs(bestNum)) {
-				bestNum = num;
-			} else if (Math.abs(num) == Math.abs(bestNum)) { // tie-breaking rule
-				bestNum = Math.max(bestNum, num);
+		int closest = Integer.MAX_VALUE;
+		for (int num : nums) {
+			if (Math.abs(num) < Math.abs(closest)) {
+				closest = num;
+			}
+			// If same distance, take the larger value
+			else if (Math.abs(num) == Math.abs(closest)) {
+				closest = Math.max(closest, num);
 			}
 		}
-
-		return bestNum;
+		return closest;
 	}
 
 	public static void main(String[] args) {
@@ -31,3 +30,6 @@ public class OptimalSolution {
 	}
 
 }
+
+// Time Complexity : O(N)
+// Space Complexity : O(1)

@@ -9,14 +9,14 @@ public class OptimalApproach2 {
 
 	private static int maxProduct(int[] nums) {
 		int firstLargest = Integer.MIN_VALUE;
-		int secondLargest = 0;
+		int secondLargest = Integer.MIN_VALUE;
 		int n = nums.length;
 		for (int i = 0; i < n; i++) {
 			if (nums[i] > firstLargest) {
 				secondLargest = firstLargest;
 				firstLargest = nums[i];
-			} else {
-				secondLargest = Math.max(secondLargest, nums[i]);
+			} else if (nums[i] > secondLargest) {
+				secondLargest = nums[i];
 			}
 		}
 		return ((firstLargest - 1) * (secondLargest - 1));

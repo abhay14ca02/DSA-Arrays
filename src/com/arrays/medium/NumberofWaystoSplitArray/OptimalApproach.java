@@ -11,15 +11,15 @@ public class OptimalApproach {
 	private static int waysToSplitArray(int[] nums) {
 
 		int n = nums.length;
-		long sum = 0;
+		long totalSum = 0;
 		for (int i = 0; i < n; i++) {
-			sum += nums[i];
+			totalSum += nums[i];
 		}
-		long leftSum = 0, rightSum = 0;
+		long leftSum = 0;
 		int split = 0;
-		for (int idx = 0; idx < n - 1; idx++) {
-			leftSum += nums[idx];
-			rightSum = sum - leftSum;
+		for (int i = 0; i < n - 1; i++) {
+			leftSum += nums[i];
+			long rightSum = totalSum - leftSum;
 			if (leftSum >= rightSum) {
 				split += 1;
 			}

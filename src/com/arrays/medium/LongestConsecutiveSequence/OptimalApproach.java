@@ -13,22 +13,21 @@ public class OptimalApproach {
 		if (n == 0) {
 			return 0;
 		}
-		int longest = 1;
 		// put all the array elements into set
 		Set<Integer> set = new HashSet<Integer>();
-		for (int i = 0; i < n; i++) {
-			set.add(nums[i]);
+
+		for (int num : nums) {
+			set.add(num);
 		}
-		for (int val : nums) {
+
+		int longest = 1;
+
+		for (int val : set) {
 			// If current element is the starting element of a sequence
 			if (set.contains(val) && !set.contains(val - 1)) {
-
 				// Then check for next elements in the sequence
-				int cur = val, count = 0;
-				while (set.contains(cur)) {
-
-					// Remove this number to avoid recomputation
-					set.remove(cur);
+				int cur = val, count = 1;
+				while (set.contains(cur + 1)) {
 					cur++;
 					count++;
 				}
@@ -45,5 +44,5 @@ public class OptimalApproach {
 		System.out.println(longest);
 	}
 }
-//Time Complexity : O(N) + O(2*N) = O(3N)
+//Time Complexity : O(N) + O(N) = O(2N)
 //Space Complexity : O(N)

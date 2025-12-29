@@ -15,9 +15,13 @@ public class OptimalSingleNumber {
 		}
 		return xor;
 	}
+
 	public static void main(String[] args) {
 		int[] arr = { 1, 1, 2, 2, 3, 3, 4, 4, 4 };
 		System.out.println(findSingleNumber(arr));
 	}
 
 }
+
+// Time Complexity : O(N)
+// Space Complexity : O(1)

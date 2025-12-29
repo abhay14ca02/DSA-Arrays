@@ -12,16 +12,31 @@ public class BetterApproach {
 
 		int n = nums.length;
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		for (int i = 0; i < n; i++) {
-			if (map.containsKey(nums[i])) {
-				map.put(nums[i], map.get(nums[i]) + 1);
-			} else {
-				map.put(nums[i], 1);
-			}
+		for (int num : nums) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			if (entry.getValue() > Math.floor(n / 2)) {
-				return entry.getKey();
+		for (int num : map.keySet())
+			if (map.get(num) > n / 2) {
+				return num;
+			}
+		return -1;
+	}
+
+//Time Complexity:O(N) + O(N)
+//Space Complexity:O(N)
+
+//We can optimize it further and we can only one pass to find majority element
+
+	private static int majorityEle(int[] nums) {
+		int n = nums.length;
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (int num : nums) {
+
+			map.put(num, map.getOrDefault(num, 0) + 1);
+
+			// checking if num is the majority element:
+			if (map.get(num) > n / 2) {
+				return num;
 			}
 		}
 		return -1;
@@ -31,6 +46,9 @@ public class BetterApproach {
 		int[] nums = { 2, 2, 1, 1, 1, 2, 2 };
 		int element = majorityElement(nums);
 		System.out.println(element);
+
+		int ele = majorityEle(nums);
+		System.out.println(ele);
 	}
 }
 //Time Complexity:O(N)

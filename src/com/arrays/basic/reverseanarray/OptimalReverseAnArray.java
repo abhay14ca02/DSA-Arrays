@@ -7,11 +7,10 @@ public class OptimalReverseAnArray {
 		int n = arr.length;
 
 		int start = 0;
-		int end = n - 1;
-		int temp = 0;
+		int end = n - 1;;
 		while (start < end) {
 
-			temp = arr[start];
+			int temp = arr[start];
 			arr[start] = arr[end];
 			arr[end] = temp;
 			start++;

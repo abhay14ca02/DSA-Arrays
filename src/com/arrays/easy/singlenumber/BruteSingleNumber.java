@@ -8,27 +8,33 @@ public class BruteSingleNumber {
 
 	private static int getSingleNumber(int[] arr) {
 
-		int i;
-		for (i = 0; i < arr.length; i++) {
-			if (arr[i] != Integer.MAX_VALUE)
+		int n = arr.length;
+		boolean[] visited = new boolean[n];
+
+		for (int i = 0; i < n; i++) {
+			if (visited[i]) {
 				continue;
+			}
 			int count = 1;
-			for (int j = i + 1; j < arr.length; j++) {
+			for (int j = i + 1; j < n; j++) {
 
 				if (arr[i] == arr[j]) {
 					count++;
-					arr[j] = Integer.MAX_VALUE;
+					visited[j] = true;
 				}
 			}
 			if (count % 2 != 0) {
-				break;
+				return arr[i];
 			}
 		}
-		return arr[i - 1];
+		return -1;
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 1, 1, 2, 2, 2};
+		int[] arr = { 1, 1, 2, 2, 2 };
 		System.out.println(getSingleNumber(arr));
 	}
 }
+
+// Time Complexity : O(N*N)
+// Space Complexity : O(N)

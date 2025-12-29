@@ -16,6 +16,7 @@ public class OptimalApproach {
 		int totalFreq = 0;
 		int maxFreq = 0;
 		int freq = 0;
+		
 		for (int i = 0; i < n; i++) {
 			count[nums[i]]++;
 			freq = count[nums[i]];

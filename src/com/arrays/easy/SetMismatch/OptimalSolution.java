@@ -19,18 +19,22 @@ public class OptimalSolution {
 				nums[idx] *= -1;
 			}
 		}
-		for (int i = 0; i < n; i++) {
-			if (nums[i] > 0) {
-				missing = (i + 1);
-				break;
-			}
+		int expectedSum = n * (n + 1) / 2;
+
+		int actualSum = 0;
+		
+		for (int num : nums) {
+			actualSum += Math.abs(num);
 		}
+		
+		missing = expectedSum + duplicate - actualSum;
+
 		int[] ans = { duplicate, missing };
 		return ans;
 	}
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 2, 2, 4 };
+		int[] nums = { 1, 2, 3, 4, 4 };
 		int[] ans = findErrorNums(nums);
 		for (int i = 0; i < ans.length; i++) {
 			System.out.print(ans[i] + " ");

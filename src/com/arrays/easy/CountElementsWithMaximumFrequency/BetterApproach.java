@@ -17,10 +17,12 @@ public class BetterApproach {
 		int[] count = new int[101];
 		int totalFreq = 0;
 		int maxFreq = 0;
+		// First pass → find max frequency
 		for (int i = 0; i < n; i++) {
 			count[nums[i]]++;
 			maxFreq = Math.max(maxFreq, count[nums[i]]);
 		}
+		// Second pass → sum frequencies equal to maxFreq
 		for (int i = 0; i < 101; i++) {
 			if (count[i] == maxFreq) {
 				totalFreq = totalFreq + maxFreq;

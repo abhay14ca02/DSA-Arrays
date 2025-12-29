@@ -7,25 +7,24 @@ public class OptimalApproach {
 	private static int[] sortedSquares(int[] nums) {
 
 		int n = nums.length;
-		int start = 0;
-		int end = n - 1;
-		int i = n - 1;
+		int left = 0;
+		int right = n - 1;
+		int pos = n - 1;
 		int[] result = new int[n];
-		while (i >= 0) {
-
-			int startSquare = nums[start] * nums[start];
-			int endSquare = nums[end] * nums[end];
-			if (endSquare > startSquare) {
-				result[i] = endSquare;
-				end--;
+		while (left <= right) {
+			int leftSq = nums[left] * nums[left];
+			int rightSq = nums[right] * nums[right];
+			if (leftSq > rightSq) {
+				result[pos--] = leftSq;
+				left++;
 			} else {
-				result[i] = startSquare;
-				start++;
+				result[pos--] = rightSq;
+				right--;
 			}
-			i--;
 		}
 		return result;
 	}
+
 	public static void main(String[] args) {
 		int[] nums = { -4, -1, 0, 3, 10 };
 		int[] result = sortedSquares(nums);

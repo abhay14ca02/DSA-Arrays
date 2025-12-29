@@ -7,6 +7,10 @@ package com.arrays.medium.sortcolors;
 //Input: nums = [2,0,2,1,1,0], Output: [0,0,1,1,2,2]
 //Input: nums = [2,0,1], Output: [0,1,2]
 public class OptimalSortColors {
+	// Using "Dutch National Flag algorithm". In - place Algorithm
+	// In this approach, we will be using 3 pointers named low, mid, and high.
+	// The primary goal here is to move 0s to the left and 2s to the right of the array
+	// and the same time all the 1s should be in the middle region of the array hence the array will be sorted.
 	private static void sortColors(int[] nums) {
 		int low = 0;
 		int mid = 0;
@@ -18,7 +22,7 @@ public class OptimalSortColors {
 				nums[low] = temp;
 				low++;
 				mid++;
-			} else if (nums[mid] == 0) {
+			} else if (nums[mid] == 1) {
 				mid++;
 			} else {
 				int temp = nums[mid];
@@ -29,6 +33,7 @@ public class OptimalSortColors {
 		}
 
 	}
+
 	public static void main(String[] args) {
 		int[] nums = { 2, 0, 2, 1, 1, 0 };
 		sortColors(nums);

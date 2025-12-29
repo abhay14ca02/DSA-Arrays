@@ -1,19 +1,27 @@
 package com.arrays.medium.IncreasingTripletSubsequence;
 
+//Given an integer array nums, return true if there exists a triple of indices (i, j, k) 
+//such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
+//Input: nums = [1,2,3,4,5], Output: true
+//Input: nums = [5,4,3,2,1], Output: false
+
 public class OptimalSolution {
+	// First, we can find first & second smallest values in a given subsequence.
+	// The, we're going to check if there is a value which larger than first & second smallest value in given sequence.
+	// If thirdNum > firstNum && thirdNum > secondNum, which there is an increasing triplet
 	private static boolean increasingTriplet(int[] nums) {
 
 		int n = nums.length;
-		int num1 = Integer.MAX_VALUE;
-		int num2 = Integer.MAX_VALUE;
+		int firstNum = Integer.MAX_VALUE;
+		int secondNum = Integer.MAX_VALUE;
 
 		for (int i = 0; i < n; i++) {
-			int num3 = nums[i];
-			if (num3 <= num1) {
-				num1 = num3;
-			} else if (num3 <= num2) {
-				num2 = num3;
-			} else {// num1 < num2
+			int thirdNum = nums[i];
+			if (thirdNum <= firstNum) {
+				firstNum = thirdNum;
+			} else if (thirdNum <= secondNum) {
+				secondNum = thirdNum;
+			} else {
 				return true;
 			}
 		}

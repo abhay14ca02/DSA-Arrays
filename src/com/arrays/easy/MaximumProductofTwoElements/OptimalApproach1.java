@@ -9,13 +9,13 @@ public class OptimalApproach1 {
 
 	private static int maxProduct(int[] nums) {
 		int n = nums.length;
-		int maxSum = 0;
+		int maxRes = 0;
 		int currentMax = nums[0];
 		for (int i = 1; i < n; i++) {
-			maxSum = Math.max(maxSum, (currentMax - 1) * (nums[i] - 1));
+			maxRes = Math.max(maxRes, (currentMax - 1) * (nums[i] - 1));
 			currentMax = Math.max(currentMax, nums[i]);
 		}
-		return maxSum;
+		return maxRes;
 	}
 
 	public static void main(String[] args) {

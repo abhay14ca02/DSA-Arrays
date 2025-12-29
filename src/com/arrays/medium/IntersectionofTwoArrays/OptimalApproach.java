@@ -11,11 +11,11 @@ import java.util.Set;
 public class OptimalApproach {
 	// Approach-3 (Sorting and binary search)
 	private static int[] intersection(int[] nums1, int[] nums2) {
-		Arrays.sort(nums1);
+		Arrays.sort(nums1);// NLogN
 		Set<Integer> set = new HashSet<Integer>();
-		for (int i = 0; i < nums2.length; i++) {
-			if (binarySearch(nums1, nums2[i])) {
-				set.add(nums2[i]);
+		for (int num2 : nums2) {// M
+			if (binarySearch(nums1, num2)) {// LogM
+				set.add(num2);
 			}
 		}
 		int[] result = new int[set.size()];
@@ -25,14 +25,15 @@ public class OptimalApproach {
 		}
 		return result;
 	}
-	private static boolean binarySearch(int[] nums1, int i) {
+
+	private static boolean binarySearch(int[] nums1, int num2) {
 		int start = 0;
 		int end = nums1.length - 1;
 		while (start <= end) {
 			int mid = start + (end - start) / 2;
-			if (nums1[mid] == i) {
+			if (nums1[mid] == num2) {
 				return true;
-			} else if (nums1[mid] < i) {
+			} else if (nums1[mid] < num2) {
 				start = mid + 1;
 			} else {
 				end = mid - 1;
@@ -50,5 +51,5 @@ public class OptimalApproach {
 		}
 	}
 }
-//T.C : O(n + mlogm)
-//S.C : O(n)
+//T.C : O(nlogn + mlogm)
+//S.C : O(unique elements)

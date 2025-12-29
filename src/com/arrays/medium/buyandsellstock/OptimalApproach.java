@@ -6,7 +6,8 @@ package com.arrays.medium.buyandsellstock;
 //Input: prices = [7,1,5,3,6,4], Output: 5
 //Input: prices = [7,6,4,3,1], Output: 0
 public class OptimalApproach {
-
+// We will initialize 2 variables maxProfit =0 & bestBuy = prices[0].
+// And check if the price of another day(sell day)> bestBuy(buy day) then calculate maxProfit else update bestBuy
 	private static int maxProfit(int[] prices) {
 
 		int maxProfit = 0, bestBuy = prices[0];

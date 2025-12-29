@@ -52,3 +52,6 @@ public class OptimalApproach {
 		System.out.println(res);
 	}
 }
+
+// Time Complexity : O(N+M)
+// Space Complexity : O(N+M)

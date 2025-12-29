@@ -5,45 +5,49 @@ import java.util.List;
 
 //Given an m x n matrix, return all elements of the matrix in spiral order.
 //Input: matrix = [[1,2,3],[4,5,6],[7,8,9]], Output: [1,2,3,6,9,8,7,4,5]
+
 public class OptimalSolution {
 
 	private static List<Integer> spiralForm(int[][] mat) {
 		List<Integer> result = new ArrayList<Integer>();
-		int row = mat.length;
-		int col = mat[0].length;
-		int top = 0, bottom = row - 1, left = 0, right = col - 1;
-		while (top <= bottom && left <= right) {
-
+		int r = mat.length; // Row
+		int c = mat[0].length; // Column
+		int t = 0; // Top
+		int bt = r - 1; // Bottom
+		int l = 0; // Left
+		int rt = c - 1; // Right
+		while (t <= bt && l <= rt) {
+			
 			// print top
-			for (int i = left; i <= right; i++) {
-				result.add(mat[top][i]);
+			for (int i = l; i <= rt; i++) {
+				result.add(mat[t][i]);
 			}
-			top++;
+			t++;
 			// print right
-			for (int j = top; j <= bottom; j++) {
-				result.add(mat[j][right]);
+			for (int j = t; j <= bt; j++) {
+				result.add(mat[j][rt]);
 			}
-			right--;
+			rt--;
 			// print bottom
-			if (top <= bottom) {
-				for (int i = right; i >= left; i--) {
-					result.add(mat[bottom][i]);
+			if (t <= bt) {
+				for (int i = rt; i >= l; i--) {
+					result.add(mat[bt][i]);
 				}
-				bottom--;
+				bt--;
 			}
 			// print left
-			if (left <= right) {
-				for (int j = bottom; j >= top; j--) {
-					result.add(mat[j][left]);
+			if (l <= rt) {
+				for (int j = bt; j >= t; j--) {
+					result.add(mat[j][l]);
 				}
-				left++;
+				l++;
 			}
 		}
 		return result;
 	}
 
 	public static void main(String[] args) {
-		int[][] mat = { { 1, 2, 3 }, { 4, 4, 6 }, { 7, 8, 9 } };
+		int[][] mat = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 		List<Integer> result = spiralForm(mat);
 		System.out.println(result);
 	}

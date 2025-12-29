@@ -1,7 +1,13 @@
 package com.arrays.medium.MaximumSumCircularSubarray;
 
+//Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+//A circular array means the end of the array connects to the beginning of the array. Formally, 
+//the next element of nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n].
+//Input: nums = [1,-2,3,-2], Output: 3
+//Explanation: Subarray [3] has maximum sum 3.
+
 public class BruteSolution {
-	private static int maxSubarraySumCircular(int[] nums) {
+	private static int maxSumCircular(int[] nums) {
 
 		int res = Integer.MIN_VALUE;
 		int n = nums.length;
@@ -39,7 +45,7 @@ public class BruteSolution {
 
 	public static void main(String[] args) {
 		int[] nums = { 1, -2, 3, -2 };
-		int maxSubarraySum = maxSubarraySumCircular(nums);
+		int maxSubarraySum = maxSumCircular(nums);
 		System.out.println(maxSubarraySum);
 
 	}
