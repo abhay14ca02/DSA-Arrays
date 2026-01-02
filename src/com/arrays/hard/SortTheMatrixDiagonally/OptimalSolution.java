@@ -35,9 +35,7 @@ public class OptimalSolution {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				int key = i - j;
-				List<Integer> list = map.get(key);
-				mat[i][j] = list.remove(0);
-
+				  mat[i][j] = map.get(key).remove(0);
 			}
 		}
 		return mat;

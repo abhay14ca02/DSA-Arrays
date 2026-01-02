@@ -14,8 +14,10 @@ public class OptimalSolution {
 		int row = mat.length;
 		int n = 0;
 		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
-		for (int i = row-1; i >=0; i--) {
-			for (int j = 0; j < mat[i].length; j++) {
+		// Traverse rows bottom → top
+		for (int i = row - 1; i >= 0; i--) {
+			int col = mat[i].length; //length of that specific row as matrix is jagged (rows have different lengths).
+			for (int j = 0; j < col; j++) {
 				int key = i + j;
 				if (!map.containsKey(key)) {
 					List<Integer> list = new ArrayList<Integer>();
@@ -27,16 +29,17 @@ public class OptimalSolution {
 		}
 		int[] result = new int[n];
 		int i = 0;
-		int diagonal = 0;
-		while (map.containsKey(diagonal)) {
-			for (int num : map.get(diagonal)) {
+		int d = 0; // diagonal
+		while (map.containsKey(d)) {
+			for (int num : map.get(d)) {
 				result[i] = num;
 				i++;
 			}
-			diagonal++;
+			d++;
 		}
 		return result;
 	}
+
 	public static void main(String[] args) {
 		int[][] mat = { { 1, 2, 3, 4, 5 }, { 6, 7 }, { 8 }, { 9, 10, 11 }, { 12, 13, 14, 15, 16 } };
 		int[] result = findDiagonalOrder(mat);
@@ -45,3 +48,5 @@ public class OptimalSolution {
 		}
 	}
 }
+//Time Complexity : O(N*M)
+//Space Complexity : O(N*M)

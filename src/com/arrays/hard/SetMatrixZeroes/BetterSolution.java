@@ -9,13 +9,14 @@ public class BetterSolution {
 		int m = mat[0].length;
 		int[] row = new int[n];
 		int[] col = new int[m];
+		
+		//Mark rows and columns
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-
 				if (mat[i][j] == 0) {
-					// mark ith index of row wih 1:
+					// mark ith index of row with 1:
 					row[i] = 1;
-					// mark jth index of col wih 1:
+					// mark jth index of col with 1:
 					col[j] = 1;
 				}
 			}

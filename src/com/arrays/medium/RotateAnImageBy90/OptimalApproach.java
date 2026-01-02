@@ -1,4 +1,4 @@
-package com.arrays.medium.RotateAnImaage;
+package com.arrays.medium.RotateAnImageBy90;
 
 //You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
 //You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. 
@@ -7,24 +7,21 @@ package com.arrays.medium.RotateAnImaage;
 
 public class OptimalApproach {
 
-	private static void rotate(int[][] matrix) {
-
-		int n = matrix.length;
-
+	private static void rotate(int[][] mat) {
+		int n = mat.length;
 		for (int i = 0; i < n; i++) {
 			for (int j = i; j < n; j++) {
-				int temp = matrix[i][j];
-				matrix[i][j] = matrix[j][i];
-				matrix[j][i] = temp;
+				int temp = mat[i][j];
+				mat[i][j] = mat[j][i];
+				mat[j][i] = temp;
 			}
 		}
 		for (int i = 0; i < n; i++) {
-			int start = 0;
-			int end = n - 1;
+			int start = 0, end = n - 1;
 			while (start < end) {
-				int temp = matrix[i][start];
-				matrix[i][start] = matrix[i][end];
-				matrix[i][end] = temp;
+				int temp = mat[i][start];
+				mat[i][start] = mat[i][end];
+				mat[i][end] = temp;
 				start++;
 				end--;
 			}
@@ -33,16 +30,16 @@ public class OptimalApproach {
 	}
 
 	public static void main(String[] args) {
-		int[][] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-		rotate(matrix);
-		int n = matrix.length;
+		int[][] mat = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		rotate(mat);
+		int n = mat.length;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				System.out.print(matrix[i][j] + " ");
+				System.out.print(mat[i][j] + " ");
 			}
 			System.out.println();
 		}
 	}
 }
 //Time Complexity:O(N*N)
-//Space Complexity:O(N)
+//Space Complexity:O(1)
